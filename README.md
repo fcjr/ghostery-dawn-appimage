@@ -11,9 +11,7 @@
 
 ## Generate an AppImage manually
 
-### prerequisites
-
-You must install (appimagetool)[https://appimage.github.io/appimagetool/] to run this script
+You must first install install (appimagetool)[https://appimage.github.io/appimagetool/] to run this script.
 
 1) Run ./genAppImage.sh
 
