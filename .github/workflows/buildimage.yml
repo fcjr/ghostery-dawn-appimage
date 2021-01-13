@@ -1,7 +1,7 @@
 name: Generate AppImage
-on: workflow_dispatch
-#  schedule:
-#    - cron: '0 0 * * *'
+on:
+ schedule:
+   - cron: '0 0 * * *'
 jobs:
   gen_app_image:
     runs-on: ubuntu-latest
