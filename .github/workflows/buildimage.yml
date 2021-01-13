@@ -20,7 +20,7 @@ jobs:
           chmod +x ./genAppImage.sh
           ./genAppImage.sh
           VERSION=$(ls Ghostery-*.tar.bz2 | cut -d "-" -f 2 | sed -e 's|.tar.bz2||g')
-          echo '::set-output name=version::$VERSION'
+          echo "::set-output name=version::$VERSION"
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -38,6 +38,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./build/Ghostery${{ steps.build_appimage.outputs.version }}.AppImage
+          asset_path: ./dist/Ghostery${{ steps.build_appimage.outputs.version }}.AppImage
           asset_name: Ghostery${{ steps.build_appimage.outputs.version }}.AppImage
           asset_content_type: application/octet-stream
