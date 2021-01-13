@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: Install Deps
         id: install_deps
         run: |
@@ -14,6 +15,7 @@ jobs:
           # Install appimagetool AppImage
           sudo wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage -O /usr/local/bin/appimagetool
           sudo chmod +x /usr/local/bin/appimagetool
+
       - name: Build AppImage
         id: build_appimage
         run: |
@@ -21,15 +23,19 @@ jobs:
           ./genAppImage.sh
           VERSION=$(ls Ghostery-*.tar.bz2 | cut -d "-" -f 2 | sed -e 's|.tar.bz2||g')
           echo "::set-output name=version::$VERSION"
-      - uses: mukunku/tag-exists-action@v1.0.0
+
+      - name: Check if tag release exists
+        uses: mukunku/tag-exists-action@v1.0.0
         id: check_tag
         with: 
-          tag: ${{ steps.build_appimage.outputs.version }}
+          tag: "${{ steps.build_appimage.outputs.version }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Skip if release already exists
         if: steps.check_tag.outputs.exists == true
         run: ::exit::neutral
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -40,6 +46,7 @@ jobs:
           release_name: ${{ steps.build_appimage.outputs.version }}
           draft: false
           prerelease: false
+
       - name: Upload Release Asset
         id: upload-release-asset 
         uses: actions/upload-release-asset@v1
