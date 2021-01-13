@@ -6,6 +6,7 @@ jobs:
   gen_app_image:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Install Deps
         id: install_deps
         run: |
