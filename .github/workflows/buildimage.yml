@@ -3,7 +3,7 @@ on: workflow_dispatch
 #  schedule:
 #    - cron: '0 0 * * *'
 jobs:
-  issue:
+  gen_app_image:
     runs-on: ubuntu-latest
     steps:
       - name: Install Deps
