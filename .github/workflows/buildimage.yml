@@ -32,9 +32,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: Skip if release already exists
-      #   if: steps.check_tag.outputs.exists == true
-      #   run: ::exit::neutral
+      - name: Skip if release already exists
+        if: steps.check_tag.outputs.exists == 'true'
+        run: exit 78 # exit neutral
 
       - name: Create Release
         id: create_release
