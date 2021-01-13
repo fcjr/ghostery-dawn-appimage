@@ -8,3 +8,13 @@
     chmod +x Ghostery*.AppImage
     ```
 3) Double-Click the .AppImage
+
+## Generate an AppImage manually
+
+### prerequisites
+
+You must install (appimagetool)[https://appimage.github.io/appimagetool/] to run this script
+
+1) Run ./genAppImage.sh
+
+An AppImage will be generated in dist/
