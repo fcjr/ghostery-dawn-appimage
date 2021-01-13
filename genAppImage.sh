@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # download lastest
-#wget --content-disposition https://get.ghosterybrowser.com/download/linux
+wget --content-disposition https://get.ghosterybrowser.com/download/linux
 
 # extract version number
 VERSION=$(ls Ghostery-*.tar.bz2 | cut -d "-" -f 2 | sed -e 's|.tar.bz2||g')
