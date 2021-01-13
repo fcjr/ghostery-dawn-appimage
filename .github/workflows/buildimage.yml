@@ -34,7 +34,7 @@ jobs:
 
       - name: Skip if release already exists
         if: steps.check_tag.outputs.exists == 'true'
-        run: exit 78 # exit neutral
+        run: exit 0 # exit early
 
       - name: Create Release
         id: create_release
